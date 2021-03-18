@@ -300,7 +300,7 @@ let g:tmuxline_preset = {
             \'cwin' : '#I #W #F',
             \'x'    : '%Y-%m-%d',
             \'y'    : '%H:%M:%S',
-            \'z'    : "#(ip a| grep inet[^6] | awk '{print $2}' | sed 's/\\\\\\\\/.*//; s/ //' | grep -v '127.0.0.1' | grep -v '^10.0')",
+            \'z'    : "#(ifconfig | grep inet[^6] | awk -F'[:\t ]+' '{print $3,$4}' | sed 's/netmask//; s/addr//; s/ //' | grep -v '127.0.0.1' | grep -v '^10.0')",
             \'options': {
             \'status-justify':'left'}
             \}
@@ -351,3 +351,9 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 command! Jsonf :execute '%!python -c "import json,sys,collections,re; sys.stdout.write(re.sub(r\"\\\u[0-9a-f]{4}\", lambda m:m.group().decode(\"unicode_escape\").encode(\"utf-8\"),json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), indent=2)))"'
 "}
 
+set runtimepath^=~/.vim/bundle/ag
+Plug 'epmatsw/ag.vim'
+map <Leader>c :Ag!<Space>
+set path+=.,~/server*/module/,~/server*/,~/server*/skynet/lualib/,~/server*/skynet/service/
+set includeexpr=substitute(v:fname,'\\.','/','g')
+set suffixesadd=.lua
