@@ -354,6 +354,6 @@ command! Jsonf :execute '%!python -c "import json,sys,collections,re; sys.stdout
 set runtimepath^=~/.vim/bundle/ag
 Plug 'epmatsw/ag.vim'
 map <Leader>c :Ag!<Space>
-set path+=.,~/server*/module/,~/server*/,~/server*/skynet/lualib/,~/server*/skynet/service/
+set path+=.,module/**,~/server*/module/,~/server*/,~/server*/skynet/lualib/,~/server*/skynet/service/
 set includeexpr=substitute(v:fname,'\\.','/','g')
 set suffixesadd=.lua
