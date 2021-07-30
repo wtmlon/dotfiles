@@ -1,4 +1,4 @@
-# Hanxi's dotfiles
+# Wtmlon's dotfiles
 
 bash + tmux + neovim
 
@@ -7,13 +7,13 @@ bash + tmux + neovim
 ### Linux
 
 ```bash
-curl https://raw.githubusercontent.com/hanxi/dotfiles/master/bootstrap.sh | bash
+curl https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bash
 ```
 
-Or:
+### Mac:
 
 ```bash
-wget -O - https://raw.githubusercontent.com/hanxi/dotfiles/master/bootstrap.sh | bash
+wget -O - https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bash
 ```
 
 But I suggest use your own repository fork from this.
@@ -23,12 +23,6 @@ But I suggest use your own repository fork from this.
 I use putty.
 
 Fonts from [powerline SourceCodePro](https://github.com/powerline/fonts/tree/master/SourceCodePro).
-
-Self init info for me. like change git info:
-
-```bash
-gitc-hanxi
-```
 
 ## Why?
 
