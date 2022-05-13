@@ -25,9 +25,13 @@ cp bootstrap.sh $BIN/
 #curl -s https://oclip.hanxi.info/install | bash -- /dev/stdin eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 '11111'
 
 # source init.sh
-sed -i "\:$ETC/init.sh:d" ~/.zshrc
-echo ". $ETC/init.sh" >> ~/.zshrc
-. ~/.zshrc
+#sed -i "\:$ETC/init.sh:d" ~/.zshrc
+#echo ". $ETC/init.sh" >> ~/.zshrc
+#. ~/.zshrc
+
+sed -i "\:$ETC/init.sh:d" ~/.bashrc
+echo ". $ETC/init.sh" >> ~/.bashrc
+. ~/.bashrc
 
 # for neovim
 mkdir -p ~/.config/nvim

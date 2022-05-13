@@ -1,6 +1,8 @@
 # Wtmlon's dotfiles
+# Mismatch of color in and out of tmux can be fixed by set $TERM=xscreen-256color (Out of tmux)
+# cannt display Chinese in tmux(Use tmux -u to start an tmux session)
 
-bash + tmux + neovim
+bash + tmux + vim
 
 ## Installation
 
@@ -15,16 +17,3 @@ curl https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bas
 ```bash
 wget -O - https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bash
 ```
-
-But I suggest use your own repository fork from this.
-
-## Others
-
-I use putty.
-
-Fonts from [powerline SourceCodePro](https://github.com/powerline/fonts/tree/master/SourceCodePro).
-
-## Why?
-
-https://zhuanlan.zhihu.com/p/50080614
-

@@ -38,9 +38,9 @@ let g:right_alt_sep=""
 
 "fonts from https://github.com/ryanoasis/nerd-fonts
 
-"if (has("termguicolors"))
-"    set termguicolors
-"endif
+if (has("termguicolors"))
+    set termguicolors
+endif
 
 if !empty(globpath(&rtp, "colors/neodark.vim"))
     let g:neodark#solid_vertsplit = 1
@@ -120,18 +120,18 @@ noremap <leader>h :call HiList()<cr>
 "}}
 
 "{{ 查找工程目录
-"function! SearchRoot()
-"  let l:scm_list = ['.root', '.svn', '.git']
-"  for l:item in l:scm_list
-"    let l:dirs = finddir(l:item, '.;', -1)
-"    if !empty(l:dirs)
-"      return fnamemodify(l:dirs[-1].'/../', ':p:h')
-"    endif
-"  endfor
-"  return getcwd()
-"endfunction
-"let g:root_dir = SearchRoot()
-"autocmd BufEnter * exe ':cd '.g:root_dir
+function! SearchRoot()
+  let l:scm_list = ['.root', '.svn', '.git']
+  for l:item in l:scm_list
+    let l:dirs = finddir(l:item, '.;', -1)
+    if !empty(l:dirs)
+      return fnamemodify(l:dirs[-1].'/../', ':p:h')
+    endif
+  endfor
+  return getcwd()
+endfunction
+let g:root_dir = SearchRoot()
+autocmd BufEnter * exe ':cd '.g:root_dir
 "}}
 
 "{{ 插件配置
@@ -153,66 +153,66 @@ let g:NERDTreeChDirMode           = 0
 "}
 
 "QFEnter{
-"let g:qfenter_keymap = {}
-"let g:qfenter_keymap.vopen = ['<C-v>']
-"let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
-"let g:qfenter_keymap.topen = ['t']
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_keymap.topen = ['t']
 "}
 
 "LeaderF{
-"let g:Lf_ShortcutF = '<c-p>'
-"noremap <c-m> :LeaderfMru<cr>
-"noremap <c-n> :LeaderfFunction<cr>
-"let g:Lf_WorkingDirectory = g:root_dir
-"let g:Lf_MruMaxFiles = 64
-"let g:Lf_StlSeparator = { 'left': g:left_sep, 'right': g:right_sep, 'font': '' }
-"let g:Lf_WindowHeight = 0.30
-"let g:Lf_CacheDirectory = expand('~/.vim/cache')
-"let g:Lf_ShowRelativePath = 1
-"let g:Lf_HideHelp = 1
-"let g:Lf_StlColorscheme = 'powerline'
-"let g:Lf_UseCache = 0
-"let g:Lf_UseVersionControlTool = 0
-"let g:Lf_ShowDevIcons = 0
-"" 搜索选中的字符串，对结果按 i 支持二次过滤
-"let g:Lf_RgConfig = [
-"    \ "--max-columns=150",
-"    \ "--type-add proto:*.proto",
-"    \ "--glob=!git/*",
-"    \ "--follow --no-ignore"
-"    \ ]
-"xnoremap gs :<C-U><C-R>=printf("Leaderf! rg -F -t proto -t c -t py -t lua --nowrap --stayOpen -e %s ", leaderf#Rg#visual())<cr><cr>
+let g:Lf_ShortcutF = '<c-p>'
+noremap <c-m> :LeaderfMru<cr>
+noremap <c-n> :LeaderfFunction<cr>
+let g:Lf_WorkingDirectory = g:root_dir
+let g:Lf_MruMaxFiles = 64
+let g:Lf_StlSeparator = { 'left': g:left_sep, 'right': g:right_sep, 'font': '' }
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 1
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_ShowDevIcons = 0
+" 搜索选中的字符串，对结果按 i 支持二次过滤
+let g:Lf_RgConfig = [
+    \ "--max-columns=150",
+    \ "--type-add proto:*.proto",
+    \ "--glob=!git/*",
+    \ "--follow --no-ignore"
+    \ ]
+xnoremap gs :<C-U><C-R>=printf("Leaderf! rg -F -t proto -t c -t py -t lua --nowrap --stayOpen -e %s ", leaderf#Rg#visual())<cr><cr>
 
 " gtags
-"let g:Lf_GtagsAutoGenerate = 1
-"let g:Lf_Gtagslabel = 'native-pygments'
-"let g:Lf_Gtagsconf = expand('~/.local/etc/gtags.conf')
-"" definition 
-"noremap <leader>d :<C-U><C-R>=printf("Leaderf! gtags -d %s", expand("<cword>"))<cr><cr>
-"" reference 
-"noremap <leader>r :<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<cr><cr>
-"" symbol 
-"noremap <leader>s :<C-U><C-R>=printf("Leaderf! gtags -s %s", expand("<cword>"))<cr><cr>
-"" grep
-"noremap <leader>g :<C-U><C-R>=printf("Leaderf! gtags -g %s", expand("<cword>"))<cr><cr>
-"
-"function! ClosePluginWindow()
-"    " Close quickfix
-"    cclose
-"
-"    " Close Leaderf Buffer
-"    redir => message
-"        silent execute "ls!"
-"    redir END
-"    let l:buflist = split(message, '\n')
-"    for l:one in l:buflist
-"        let l:items = split(l:one, '"')
-"    if match(l:items[0], "u*a-") >= 0
-"        let l:bufid = matchstr(l:items[0], '\d\+')
-"        exe 'bd! '.l:bufid
-"    endif
-"    endfor
-"endfunction
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+let g:Lf_Gtagsconf = expand('~/.local/etc/gtags.conf')
+" definition 
+noremap <leader>d :<C-U><C-R>=printf("Leaderf! gtags -d %s", expand("<cword>"))<cr><cr>
+" reference 
+noremap <leader>r :<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<cr><cr>
+" symbol 
+noremap <leader>s :<C-U><C-R>=printf("Leaderf! gtags -s %s", expand("<cword>"))<cr><cr>
+" grep
+noremap <leader>g :<C-U><C-R>=printf("Leaderf! gtags -g %s", expand("<cword>"))<cr><cr>
+
+function! ClosePluginWindow()
+    " Close quickfix
+    cclose
+
+    " Close Leaderf Buffer
+    redir => message
+        silent execute "ls!"
+    redir END
+    let l:buflist = split(message, '\n')
+    for l:one in l:buflist
+        let l:items = split(l:one, '"')
+    if match(l:items[0], "u*a-") >= 0
+        let l:bufid = matchstr(l:items[0], '\d\+')
+        exe 'bd! '.l:bufid
+    endif
+    endfor
+endfunction
 " 关闭插件窗口
 map <C-C><C-C> :call ClosePluginWindow()<cr>
 "}
