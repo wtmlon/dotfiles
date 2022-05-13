@@ -25,7 +25,7 @@ cp bootstrap.sh $BIN/
 #curl -s https://oclip.hanxi.info/install | bash -- /dev/stdin eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 '11111'
 
 # source init.sh
-sed -i "" "\:$ETC/init.sh:d" ~/.zshrc
+sed -i "\:$ETC/init.sh:d" ~/.zshrc
 echo ". $ETC/init.sh" >> ~/.zshrc
 . ~/.zshrc
 
@@ -35,12 +35,12 @@ cp $ETC/init.vim ~/.config/nvim/init.vim
 
 # source vimrc.vim
 touch ~/.vimrc
-sed -i "" "\:$ETC/vimrc.vim:d" ~/.vimrc
+sed -i "\:$ETC/vimrc.vim:d" ~/.vimrc
 echo "source $ETC/vimrc.vim" >> ~/.vimrc
 
 # source tmux.conf
 touch ~/.tmux.conf
-sed -i "" "\:$ETC/tmux.conf:d" ~/.tmux.conf
+sed -i "\:$ETC/tmux.conf:d" ~/.tmux.conf
 echo "source $ETC/tmux.conf" >> ~/.tmux.conf
 
 # update git config
