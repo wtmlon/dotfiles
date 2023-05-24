@@ -14,7 +14,7 @@ if [ -d dotfiles ]; then
     cd dotfiles
     git pull
 else
-    git clone git@github.com:wtmlon/dotfiles.git
+    git clone https://github.com/wtmlon/dotfiles.git
     cd dotfiles
 fi
 cp -rf etc/* $ETC/
