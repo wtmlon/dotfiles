@@ -1,6 +1,4 @@
 # Wtmlon's dotfiles
-# Mismatch of color in and out of tmux can be fixed by set $TERM=xscreen-256color (Out of tmux)
-# cannt display Chinese in tmux(Use tmux -u to start an tmux session)
 
 bash + tmux + vim
 
@@ -17,3 +15,7 @@ curl https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bas
 ```bash
 wget -O - https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bash
 ```
+
+# Some solution
+- Mismatch of color in and out of tmux can be fixed by set $TERM=xscreen-256color (Out of tmux)
+- cannt display Chinese in tmux(Use tmux -u to start an tmux session)
