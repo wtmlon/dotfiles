@@ -52,6 +52,13 @@ endif
 "}}
 
 "{{ 通用配置
+" 搜索相关
+set incsearch  " 开启增量搜索（如输入 '/vim' 时，实时高亮所有含 'vim' 的内容）
+
+set showmatch  " 显示匹配计数（如底部提示 "3/5" 表示第3个匹配，共5个）
+set matchtime=5  " 匹配提示的显示时间（单位：秒，0 表示永久显示）
+
+
 set nocompatible
 set ai                                  "自动缩进
 set si
@@ -75,7 +82,8 @@ set nofoldenable                        "关闭代码折叠
 set clipboard=unnamed                   " use the system clipboard
 set nois                                " 设置搜索不自动跳转
 set noshowmode
-set mouse=a                             " 支持鼠标滚动
+"set mouse=a                             " 支持鼠标滚动
+set mouse= 
 set diffopt=vertical                    " diff 窗口纵排
 set wildignore=*.swp,*.bak,*.pyc,*.obj,*.o,*.class
 set wildignore+=*.so,*.swp,*.zip        " MacOSX/Linux
@@ -320,6 +328,8 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 command! Jsonf :execute '%!python -c "import json,sys,collections,re; sys.stdout.write(re.sub(r\"\\\u[0-9a-f]{4}\", lambda m:m.group().decode(\"unicode_escape\").encode(\"utf-8\"),json.dumps(json.load(sys.stdin, object_pairs_hook=collections.OrderedDict), indent=2)))"'
 "}
 
+set nocursorline
+set nocursorcolumn
 set runtimepath^=~/.vim/bundle/ag
 Plug 'epmatsw/ag.vim'
 map <Leader>c :Ag!<Space>
