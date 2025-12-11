@@ -45,6 +45,8 @@ let g:right_alt_sep=""
 "if (has("termguicolors"))
 "    set termguicolors
 "endif
+"
+
 
 if !empty(globpath(&rtp, "colors/neodark.vim"))
     let g:neodark#solid_vertsplit = 1
@@ -99,6 +101,7 @@ set hidden
 set nobackup
 set nowritebackup
 set updatetime=300
+set noswapfile
 if v:version > 801 || has('nvim')
     set shortmess+=c
 endif
@@ -343,3 +346,7 @@ set includeexpr=substitute(v:fname,'\\.','/','g')
 set suffixesadd+=.lua
 set suffixesadd+=.py
 set rtp+=/usr/bin/fzf
+
+nnoremap <Leader>s :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
+nnoremap <Leader>r :source ~/vim-session.vim<CR>
+
