@@ -18,6 +18,10 @@ Plug 'vim-airline/vim-airline-themes'             " 状态栏主题
 Plug 'edkolev/tmuxline.vim'                       " 生成 tmuxline color
 Plug 'edkolev/promptline.vim'                     " 生成 bash path color
 Plug 'plasticboy/vim-markdown'                    " markdown 语法高亮
+" fzf native plugin
+Plug 'junegunn/fzf'
+" fzf.vim
+Plug 'junegunn/fzf.vim'
 
 if (v:version > 801 || has('nvim') && has('python'))
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }} " markdown 预览
@@ -332,8 +336,10 @@ set nocursorline
 set nocursorcolumn
 set runtimepath^=~/.vim/bundle/ag
 Plug 'epmatsw/ag.vim'
-map <Leader>c :Ag!<Space>
+map <Leader>c :Ag<CR>
+map <Leader>f :Files<CR>
 set path+=./**,module/**,~/server*/module/,~/server*/,~/server*/skynet/lualib/,~/server*/skynet/service/
 set includeexpr=substitute(v:fname,'\\.','/','g')
 set suffixesadd+=.lua
 set suffixesadd+=.py
+set rtp+=/usr/bin/fzf
