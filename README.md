@@ -1,6 +1,8 @@
 #### Wtmlon's dotfiles
 
 bash + tmux + vim
+<img width="1940" height="936" alt="image" src="https://github.com/user-attachments/assets/06492a7b-40ad-453e-a8d5-4311164b2709" />
+
 
 ##### Installation
 
