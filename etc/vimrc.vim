@@ -155,7 +155,6 @@ noremap <leader>h :call HiList()<cr>
 function! ToggleNERDTree()
     silent exe ':NERDTree '.expand('%:p:h')
 endfunction
-map <leader>t :call ToggleNERDTree()<cr>
 let NERDTreeIgnore = ['\~$', '\$.*$', '\.swp$', '\.pyc$', '#.\{-\}#$']
 let s:ignore = ['.pb', '.xls', '.xlsx', '.mobi', '.mp4', '.mp3']
 
@@ -339,13 +338,43 @@ set nocursorline
 set nocursorcolumn
 set runtimepath^=~/.vim/bundle/ag
 Plug 'epmatsw/ag.vim'
-map <Leader>c :Ag<CR>
+
+let g:fzf_vim = {}
+
+" 预览窗口默认隐藏，可通过 ctrl-/ 切换显示状态。
+" 预览窗口默认显示在右侧（宽度 50%），但若窗口宽度小于 70 列，
+" 则会显示在候选列表上方（高度 40%）
+let g:fzf_vim.preview = ['batcat --color=always {}']
+let g:fzf_vim.style = ['full']
+"let g:fzf_vim.preview_window = ['hidden,right,50%,<70(up,40%)']
+
+" 字符串格式
+"let g:fzf_vim.blines_options = '--style full --border-label " Open Buffers "'
+
+" Ag setting
+" select and search
+nmap <Leader>c :Ag! <C-r><C-w><CR>
+vmap <leader>c "xy:<C-u>Ag! <C-r>x<CR>
+" just search
+map <Leader>b :Ag<CR>
+
+" select and search
+nmap [c :BLines <C-r><C-w><CR>
+vmap [c "xy:<C-u>BLines <C-r>x<CR>
+
+" just search
+map [b :BLines <CR>
+
 map <Leader>f :Files<CR>
+map <Leader>v :Buffer<CR>
+map <Leader>t :call ToggleNERDTree()<CR>
+map <Leader>j :term<CR>
 set path+=./**,module/**,~/server*/module/,~/server*/,~/server*/skynet/lualib/,~/server*/skynet/service/
 set includeexpr=substitute(v:fname,'\\.','/','g')
 set suffixesadd+=.lua
 set suffixesadd+=.py
 set rtp+=/usr/bin/fzf
+set noautochdir " pwd为运行vim命令位置
 
 nnoremap <Leader>s :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
 nnoremap <Leader>r :source ~/vim-session.vim<CR>

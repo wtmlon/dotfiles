@@ -10,7 +10,7 @@ bash + tmux + vim
 
 ```bash
 # Copy and Enter installation
-wget https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz; tar zxvf fzf-0.67.0-linux_amd64.tar.gz; mv fzf /usr/bin/; apt install -y silversearcher-ag; echo "alias vimm='vim -c \"source ~/vim-session.vim\"'" > ~/.bashrc; . ~/.bashrc; curl https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bash
+wget https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_amd64.tar.gz; tar zxvf fzf-0.67.0-linux_amd64.tar.gz; mv fzf /usr/bin/; apt install -y silversearcher-ag bat; curl https://raw.githubusercontent.com/wtmlon/dotfiles/master/bootstrap.sh | bash
 ```
 
 ##### Mac:
