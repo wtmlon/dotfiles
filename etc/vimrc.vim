@@ -15,6 +15,7 @@ Plug 'skywind3000/vim-preview'                    " 预览代码
 Plug 'KeitaNakamura/neodark.vim'                  " 颜色主题 neodark
 Plug 'vim-airline/vim-airline'                    " 状态栏
 Plug 'vim-airline/vim-airline-themes'             " 状态栏主题
+Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'                       " 生成 tmuxline color
 Plug 'edkolev/promptline.vim'                     " 生成 bash path color
 Plug 'plasticboy/vim-markdown'                    " markdown 语法高亮
@@ -48,14 +49,27 @@ let g:right_alt_sep=""
 "
 
 
-if !empty(globpath(&rtp, "colors/neodark.vim"))
-    let g:neodark#solid_vertsplit = 1
-    let g:airline_theme='papercolor'
-    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " fixed color for $TERM=screen-256color
-    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    colorscheme neodark
-endif
+" airline主题，淡蓝色
+"if !empty(globpath(&rtp, "colors/neodark.vim"))
+"    let g:neodark#solid_vertsplit = 1
+"    let g:airline_theme='papercolor'
+"    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " fixed color for $TERM=screen-256color
+"    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"    colorscheme neodark
+"endif
 "}}
+
+" lightline主题，绿色
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'charvaluehex' ] ]
+      \ },
+      \ 'component': {
+      \   'charvaluehex': '0x%B'
+      \ },
+      \ }
 
 "{{ 通用配置
 " 搜索相关
