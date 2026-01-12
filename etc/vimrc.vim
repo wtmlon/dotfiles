@@ -390,6 +390,9 @@ set suffixesadd+=.py
 set rtp+=/usr/bin/fzf
 set noautochdir " pwd为运行vim命令位置
 
+set incsearch
+colorscheme retrobox
+
 nnoremap <Leader>s :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
 nnoremap <Leader>r :source ~/vim-session.vim<CR>
 
