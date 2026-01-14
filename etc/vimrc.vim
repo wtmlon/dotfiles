@@ -88,7 +88,6 @@ set showmatch                           "代码匹配
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set cursorline                          "为光标所在行加下划线
 set cursorcolumn                        "为光标所在行加下划线
-set number                              "显示行号
 set autoread                            "文件在Vim之外修改过，自动重新读入
 set autowriteall                        "设置自动保存
 set ignorecase                          "检索时忽略大小写
@@ -349,6 +348,7 @@ command! Jsonf :execute '%!python -c "import json,sys,collections,re; sys.stdout
 "}
 
 set nocursorline
+set number relativenumber
 set nocursorcolumn
 set runtimepath^=~/.vim/bundle/ag
 Plug 'epmatsw/ag.vim'
@@ -368,7 +368,7 @@ let g:fzf_vim.style = ['full']
 " Ag setting
 " select and search
 nmap <Leader>c :Ag! <C-r><C-w><CR>
-vmap <leader>c "xy:<C-u>Ag! <C-r>x<CR>
+vmap <Leader>c "xy:<C-u>Ag! <C-r>x<CR>
 " just search
 map <Leader>b :Ag<CR>
 
@@ -391,7 +391,10 @@ set rtp+=/usr/bin/fzf
 set noautochdir " pwd为运行vim命令位置
 
 set incsearch
-colorscheme retrobox
+colorscheme neodark
+
+" 防止<leader>c 自动插入I
+set term=tmux-256color
 
 nnoremap <Leader>s :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
 nnoremap <Leader>r :source ~/vim-session.vim<CR>
