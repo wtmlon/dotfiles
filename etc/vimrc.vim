@@ -383,6 +383,7 @@ map <Leader>f :Files<CR>
 map <Leader>v :Buffer<CR>
 map <Leader>t :call ToggleNERDTree()<CR>
 map <Leader>j :term<CR>
+map <C-p> :Jumps<CR>
 set path+=./**,module/**,~/server*/module/,~/server*/,~/server*/skynet/lualib/,~/server*/skynet/service/
 set includeexpr=substitute(v:fname,'\\.','/','g')
 set suffixesadd+=.lua
@@ -391,7 +392,7 @@ set rtp+=/usr/bin/fzf
 set noautochdir " pwd为运行vim命令位置
 
 set incsearch
-colorscheme neodark
+colorscheme elflord
 
 " 防止<leader>c 自动插入I
 set term=tmux-256color
