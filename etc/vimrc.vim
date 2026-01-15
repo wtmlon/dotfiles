@@ -371,6 +371,8 @@ nmap <Leader>c :Ag! <C-r><C-w><CR>
 vmap <Leader>c "xy:<C-u>Ag! <C-r>x<CR>
 " just search
 map <Leader>b :Ag<CR>
+" Git status list
+map <Leader>g :GFiles?<CR>
 
 " select and search
 nmap [c :BLines <C-r><C-w><CR>
