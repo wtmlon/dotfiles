@@ -19,6 +19,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'                       " 生成 tmuxline color
 Plug 'edkolev/promptline.vim'                     " 生成 bash path color
 Plug 'plasticboy/vim-markdown'                    " markdown 语法高亮
+
+Plug 'ghifarit53/tokyonight-vim'
+
 " fzf native plugin
 Plug 'junegunn/fzf'
 " fzf.vim
@@ -30,6 +33,13 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } " Fuzzy search. 文件列表�
 endif
 
 call plug#end()
+
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+
 
 "{{ 主题
 syn on
@@ -94,7 +104,7 @@ set ignorecase                          "检索时忽略大小写
 set encoding=utf-8
 set fileencoding=utf-8                  "使用utf-8新建文件
 set fileencodings=utf-8,gbk             "使用utf-8或gbk打开文件
-let &termencoding=&encoding
+let &termencoding=&encoding           " neovim 不支持
 set hls                                 "检索时高亮显示匹配项
 set helplang=cn                         "帮助系统设置为中文
 set nofoldenable                        "关闭代码折叠
@@ -394,10 +404,13 @@ set rtp+=/usr/bin/fzf
 set noautochdir " pwd为运行vim命令位置
 
 set incsearch
-colorscheme elflord
+"colorscheme elflord
+colorscheme tokyonight
 
 " 防止<leader>c 自动插入I
 set term=tmux-256color
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " fixed color for $TERM=screen-256color
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 nnoremap <Leader>s :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
 nnoremap <Leader>r :source ~/vim-session.vim<CR>
