@@ -13,13 +13,19 @@ Plug 'tpope/vim-fugitive'                         " git 操作
 Plug 'skywind3000/vim-preview'                    " 预览代码
 
 Plug 'KeitaNakamura/neodark.vim'                  " 颜色主题 neodark
-Plug 'vim-airline/vim-airline'                    " 状态栏
-Plug 'vim-airline/vim-airline-themes'             " 状态栏主题
+"Plug 'vim-airline/vim-airline'                    " 状态栏
+"Plug 'vim-airline/vim-airline-themes'             " 状态栏主题
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'                       " 生成 tmuxline color
 Plug 'edkolev/promptline.vim'                     " 生成 bash path color
 Plug 'plasticboy/vim-markdown'                    " markdown 语法高亮
+" 复制到clipboard
+Plug 'christoomey/vim-system-copy'
 
+" jedi 自动补全
+Plug 'davidhalter/jedi-vim'
+
+" tokyo night theme
 Plug 'ghifarit53/tokyonight-vim'
 
 " fzf native plugin
@@ -38,7 +44,6 @@ set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
-
 
 
 "{{ 主题
@@ -412,6 +417,22 @@ set term=tmux-256color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " fixed color for $TERM=screen-256color
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-nnoremap <Leader>s :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
+" 快照保存
+nnoremap <Leader><space> :wa<CR>:mksession! ~/vim-session.vim<CR>:qa<CR>
 nnoremap <Leader>r :source ~/vim-session.vim<CR>
+
+" 开启自动补全（输入指定字符后自动弹出补全菜单）
+set completeopt=menu,menuone,noselect " 补全菜单样式：显示菜单、单选项也显示、不自动选中
+set pumheight=10 " 补全菜单最大显示行数
+
+" 配置自动触发补全的时机：输入2个字符后，延迟100ms触发
+autocmd InsertEnter * set updatetime=1
+autocmd CursorHoldI *
+    \ if pumvisible() == 0 && getline('.')[col('.')-2] =~# '\k' |
+    \   call feedkeys("\<C-n>", 'n') |
+    \ endif
+"
+"" 可选：指定补全范围（比如包含当前缓冲区、字典、路径等）
+"" set complete=.,w,b,u,t,i " 补全源：当前行、窗口、缓冲区、未加载缓冲区、标签页、包含文件
+set complete=.,w,b " 补全源：当前行、窗口、缓冲区、未加载缓冲区、标签页、包含文件
 
