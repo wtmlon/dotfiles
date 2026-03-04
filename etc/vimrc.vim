@@ -426,11 +426,11 @@ set completeopt=menu,menuone,noselect " 补全菜单样式：显示菜单、单�
 set pumheight=10 " 补全菜单最大显示行数
 
 " 配置自动触发补全的时机：输入2个字符后，延迟100ms触发
-autocmd InsertEnter * set updatetime=1
-autocmd CursorHoldI *
-    \ if pumvisible() == 0 && getline('.')[col('.')-2] =~# '\k' |
-    \   call feedkeys("\<C-n>", 'n') |
-    \ endif
+"autocmd InsertEnter * set updatetime=1
+"autocmd CursorHoldI *
+"    \ if pumvisible() == 0 && getline('.')[col('.')-2] =~# '\k' |
+"    \   call feedkeys("\<C-n>", 'n') |
+"    \ endif
 "
 "" 可选：指定补全范围（比如包含当前缓冲区、字典、路径等）
 "" set complete=.,w,b,u,t,i " 补全源：当前行、窗口、缓冲区、未加载缓冲区、标签页、包含文件
